@@ -19,14 +19,14 @@ double random_initializer(int i, int j) { return (double)(rand()) / RAND_MAX; }
 double index_initializer(int i, int j) { return 10*(i+1) + (j+1); }
 
 void print_matrix(double* A, int m, int n) {
-    int x,y;
+    int i, j;
     printf("[");
-    for(y=0; y<m; y++) {
+    for(i=0; i<m; i++) {
         printf("\t[");
-        for(x=0; x<n; x++) {
-            printf("%12.8f%s", A[x*m+y], ((x != n-1) ? ", " : ""));
+        for(j=0; j<n; j++) {
+            printf("%12.8f%s", A[COLUMN_MAJOR(i, j, m, n)], ((j != n-1) ? ", " : ""));
         }
-        printf("]%s\n", ((y != n-1) ? "," : ""));
+        printf("]%s\n", ((i != n-1) ? "," : ""));
     }
     printf("]\n");
 }
